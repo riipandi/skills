@@ -1,15 +1,15 @@
 # Third-party notices
 
-This skill combines and adapts four sources. Three are MIT licensed and their copyright
-notices are reproduced below as the license requires. The fourth has no stated license and is
-credited here as the source of adapted ideas.
+The skills in this repo combine and adapt the sources below. The MIT-licensed ones have their
+copyright notices reproduced here as the license requires. One source has no stated license and
+is credited as the source of adapted ideas.
 
 ## Clarity
 
 - Source: <https://github.com/addyosmani/clarity>
 - Copyright (c) 2026 Addy Osmani
 - License: MIT
-- Used for: the base `SKILL.md`, the modes and their arguments, `references/interview.md`,
+- Used for: the base of `skills/clarity/SKILL.md`, the modes and their arguments, `references/interview.md`,
   `references/edit.md`, `references/review.md`, `references/longform.md`,
   `references/medium.md`, `scripts/strip_markdown.py`, and `scripts/prose_stats.py`. The
   reference files are modified. The two scripts are reformatted with ruff; their logic is
@@ -40,9 +40,25 @@ credited here as the source of adapted ideas.
   framework adapted in `references/indonesian.md`. The guidance is rewritten in English, not
   copied.
 
+## prompt-optimizer
+
+- Source: <https://github.com/github/awesome-copilot/tree/main/skills/prompt-optimizer>
+- Copyright GitHub, Inc.
+- License: MIT
+- Used for: the two hard rules, the rewrite workflow, the prompting principles, and the examples
+  in `skills/prompt-optimizer/`. The text is rewritten and shortened. The always-on mode, the
+  toggle, and the subagent brief guidance are additions.
+
+## Ideas without copied text
+
+- The repo layout (several skills under `skills/`, shipped as one plugin) follows
+  <https://github.com/mattpocock/skills>.
+- The on/off toggle handled by a `UserPromptSubmit` hook follows
+  <https://github.com/DietrichGebert/ponytail>.
+
 ## MIT License
 
-The three MIT-licensed sources above are used under these terms:
+The MIT-licensed sources above are used under these terms:
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 and associated documentation files (the "Software"), to deal in the Software without

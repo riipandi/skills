@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Optimizer"
+  short_description: "Turn a rough prompt into a finished one"
+  default_prompt: "Use $prompt-optimizer to turn this into a finished prompt I can send as it is."

@@ -1,5 +1,5 @@
 ---
-description: Critique a draft without rewriting it and without changing any file.
+description: "Clarity: Critique a draft without rewriting it and without changing any file."
 argument-hint: "[file path, or paste the draft]"
 ---
 

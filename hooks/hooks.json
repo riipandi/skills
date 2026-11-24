@@ -1,12 +1,22 @@
 {
-  "description": "Applies the Clarity language rules from the first message of every session",
+  "description": "Applies the language rules and the prompt optimizer from the first message, and handles /prompt-optimizer on|off",
   "hooks": {
     "SessionStart": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.md\""
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.sh\" session-start"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.sh\" prompt"
           }
         ]
       }

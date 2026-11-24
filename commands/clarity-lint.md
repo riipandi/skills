@@ -1,5 +1,5 @@
 ---
-description: Run Clarity's prose diagnostics on a file. Reports habits to look at and changes nothing.
+description: "Clarity: Run Clarity's prose diagnostics on a file. Reports habits to look at and changes nothing."
 argument-hint: "[file path]"
 ---
 

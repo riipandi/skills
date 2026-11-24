@@ -1,5 +1,5 @@
 ---
-description: Rewrite a draft so it is specific and sounds like its author, without changing its facts.
+description: "Clarity: Rewrite a draft so it is specific and sounds like its author, without changing its facts."
 argument-hint: "[file path, or paste the draft]"
 ---
 

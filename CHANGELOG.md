@@ -2,6 +2,17 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0113
+
+- Renamed the repo to `riipandi/skills` and the plugin to `riipandi`. Skills are now
+  `/riipandi:clarity` and `/riipandi:prompt-optimizer`. The marketplace is `riipandi-skills`.
+- Moved Clarity to `skills/clarity/`, with its references, lint scripts, and evals.
+- Added the `prompt-optimizer` skill, adapted from github/awesome-copilot.
+- Added an always-on prompt optimizer through the session hook, with `on`, `off`, and `status`.
+- Replaced the `cat` hook with `hooks/hook.sh`, which also handles the toggle.
+- Renamed the Clarity commands to `/riipandi:clarity-interview`, `-rewrite`, `-review`, `-lint`.
+- `scripts/package_skill.py` now packs every skill into `dist/<name>.skill`.
+
 ## 20261125-0101
 
 - Added Claude Code slash commands for each mode, with descriptions and argument hints.

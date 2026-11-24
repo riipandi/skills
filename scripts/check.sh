@@ -13,7 +13,7 @@ shellcheck=(uvx --from shellcheck-py==0.11.0.1 shellcheck)
 shfmt=(uvx --from shfmt-py==4.2.0 shfmt -i 2)
 oxlint=(npx --yes oxlint@1.95.0 --deny-warnings)
 oxfmt=(npx --yes oxfmt@0.80.0)
-shell_files=(scripts/*.sh)
+shell_files=(scripts/*.sh hooks/*.sh)
 
 if [[ "${1:-}" == "--fix" ]]; then
   "${rumdl[@]}" fmt .

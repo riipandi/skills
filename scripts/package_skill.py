@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Pack the skill into dist/clarity.skill (a zip with one top-level `clarity/` folder).
+"""Pack each skill into dist/<name>.skill (a zip with one top-level `<name>/` folder).
 
 Usage:
-    python3 scripts/package_skill.py [output-directory]
+    python3 scripts/package_skill.py [skill-name ...]
+
+With no names, every skill under skills/ is packed.
 """
 
 import subprocess
@@ -11,28 +13,35 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-NAME = "clarity"
-# Only what the agent needs at runtime, plus the license files.
-INCLUDE = [
-    "SKILL.md",
-    "LICENSE",
-    "THIRD_PARTY_NOTICES.md",
-    "references/*.md",
-    "scripts/strip_markdown.py",
-    "scripts/prose_stats.py",
-]
+# Evals are for development; an agent does not need them at runtime.
+SKIP_DIRS = {"evals", "__pycache__"}
+LICENSE_FILES = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
 
-if subprocess.run([sys.executable, str(ROOT / "scripts" / "validate_package.py")]).returncode:
-    sys.exit("Validation failed; not packaging.")
+if subprocess.run(
+    [sys.executable, str(ROOT / "scripts" / "validate_package.py")], stdout=subprocess.DEVNULL
+).returncode:
+    sys.exit("Validation failed; run scripts/validate_package.py to see why. Not packaging.")
 
-out_dir = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT / "dist"
-out_dir.mkdir(parents=True, exist_ok=True)
-target = out_dir / f"{NAME}.skill"
+all_names = sorted(p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md"))
+names = sys.argv[1:] or all_names
+unknown = set(names) - set(all_names)
+if unknown:
+    sys.exit(f"Unknown skill: {', '.join(sorted(unknown))}. Known skills: {', '.join(all_names)}")
 
-files = sorted(p for pattern in INCLUDE for p in ROOT.glob(pattern))
-with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as archive:
-    for path in files:
-        archive.write(path, Path(NAME) / path.relative_to(ROOT))
-
-assert f"{NAME}/SKILL.md" in zipfile.ZipFile(target).namelist()
-print(f"\nPacked {len(files)} files into {target}")
+out_dir = ROOT / "dist"
+out_dir.mkdir(exist_ok=True)
+for name in names:
+    skill_dir = ROOT / "skills" / name
+    files = sorted(
+        p
+        for p in skill_dir.rglob("*")
+        if p.is_file() and not SKIP_DIRS & set(p.relative_to(skill_dir).parts) and p.name != ".DS_Store"
+    )
+    target = out_dir / f"{name}.skill"
+    with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as archive:
+        for path in files:
+            archive.write(path, Path(name) / path.relative_to(skill_dir))
+        for rel in LICENSE_FILES:
+            archive.write(ROOT / rel, Path(name) / rel)
+    assert f"{name}/SKILL.md" in zipfile.ZipFile(target).namelist()
+    print(f"Packed {len(files) + len(LICENSE_FILES)} files into {target.relative_to(ROOT)}")

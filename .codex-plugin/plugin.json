@@ -1,26 +1,27 @@
 {
-  "name": "clarity",
-  "description": "Draft, rewrite, or review reader-facing prose so it is specific, useful, and recognizably the author's without inventing facts or performing humanness.",
-  "version": "0.1.0",
+  "name": "riipandi",
+  "description": "Aris Ripandi's agent skills: Clarity for prose that is specific and honest, and Prompt Optimizer for prompts that say what they mean.",
+  "version": "0.2.0",
   "author": {
     "name": "Aris Ripandi",
     "url": "https://github.com/riipandi"
   },
-  "homepage": "https://github.com/riipandi/skill-clarity",
-  "repository": "https://github.com/riipandi/skill-clarity",
+  "homepage": "https://github.com/riipandi/skills",
+  "repository": "https://github.com/riipandi/skills",
   "license": "MIT",
-  "keywords": ["writing", "editing", "prose", "style", "humanize", "indonesian"],
-  "skills": "./",
+  "keywords": ["skills", "writing", "editing", "prose", "prompt-engineering", "indonesian"],
+  "skills": "./skills/",
   "hooks": "./hooks/hooks.json",
   "interface": {
-    "displayName": "Clarity",
-    "shortDescription": "Draft, rewrite, or review prose without inventing facts",
+    "displayName": "Riipandi Skills",
+    "shortDescription": "Clarity for prose, Prompt Optimizer for prompts",
     "developerName": "Aris Ripandi",
     "category": "Productivity",
     "capabilities": ["Interactive", "Read", "Write"],
-    "websiteURL": "https://github.com/riipandi/skill-clarity",
+    "websiteURL": "https://github.com/riipandi/skills",
     "defaultPrompt": [
-      "Use $clarity to rewrite this text so it is specific and sounds like me, without changing its facts."
+      "Use $clarity to rewrite this text so it is specific and sounds like me, without changing its facts.",
+      "Use $prompt-optimizer to turn this into a finished prompt I can send as it is."
     ]
   }
 }

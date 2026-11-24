@@ -5,6 +5,11 @@
       "title": "Writing",
       "description": "Drafting, rewriting, and reviewing prose so it carries a point of view instead of reading like generic model output.",
       "skills": ["clarity"]
+    },
+    {
+      "title": "Prompting",
+      "description": "Turning rough prompts and task descriptions into finished prompts, and sharpening requests before acting on them.",
+      "skills": ["prompt-optimizer"]
     }
   ]
 }

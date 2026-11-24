@@ -1,5 +1,5 @@
 ---
-description: Co-write a piece from your own words. Clarity interviews you first and drafts after you answer.
+description: "Clarity: Co-write a piece from your own words. Clarity interviews you first and drafts after you answer."
 argument-hint: "[what you want to write about]"
 ---
 

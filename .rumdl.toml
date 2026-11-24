@@ -1,5 +1,5 @@
 [global]
-exclude = ["dist", "node_modules", "evals"]
+exclude = ["dist", "node_modules", "skills/*/evals"]
 
 [MD013]
 line-length = 120

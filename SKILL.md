@@ -67,6 +67,10 @@ lint | stats                        Run diagnostics without changing prose.
 Without a mode, infer from the request. Ask only when the user could reasonably mean either a
 review or a rewrite.
 
+When the skill is invoked with nothing to work on (no mode word, no draft, no file, and no
+writing task in the conversation), do not guess. Reply with the four modes, one line each with
+its main mode word and what it does, in the user's language, and ask what they want to work on.
+
 Load only the reference the mode needs:
 
 ```txt

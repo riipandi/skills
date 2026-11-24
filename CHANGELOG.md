@@ -2,6 +2,11 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0101
+
+- Added Claude Code slash commands for each mode, with descriptions and argument hints.
+- `/clarity` with nothing to work on now replies with the list of modes.
+
 ## 20261125-0047
 
 - Added six eval cases under `evals/` and ran the first with-skill and without-skill comparison.

@@ -16,6 +16,9 @@ This repo is an agent skill written in Markdown. `SKILL.md` is the prompt agents
 - `.cursor-plugin/plugin.json` describes the Cursor plugin. It has no `skills` path so Cursor
   loads the root `SKILL.md`.
 - `package.json` makes the repo a pi package. Do not add a `version` field; pi installs from git.
+- `commands/` holds one Claude Code slash command per mode (`/clarity:review` and so on). Their
+  `description` and `argument-hint` are what the slash menu shows. `argument-hint` is allowed
+  here but not in `SKILL.md`. Add a command when you add a mode.
 - `hooks/hooks.json` is the `SessionStart` hook for Claude Code and Codex. It prints
   `hooks/session-start.md` into every session. That file repeats the language rules from
   `SKILL.md`; keep the two in sync.

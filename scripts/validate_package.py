@@ -42,6 +42,10 @@ for rel in (".claude-plugin/marketplace.json", "package.json", "skills.sh.json",
 package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
 for rel in package["pi"]["extensions"]:
     check((ROOT / rel).is_file(), f"pi extension {rel} exists")
+# Each command must show a description and an argument hint in the slash menu.
+for path in sorted((ROOT / "commands").glob("*.md")):
+    head = path.read_text(encoding="utf-8").split("---", 2)[1]
+    check("description:" in head and "argument-hint:" in head, f"commands/{path.name} has a description and a hint")
 changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
 headings = re.findall(r"^## (.+)$", changelog, re.M)
 check(

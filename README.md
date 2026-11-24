@@ -119,6 +119,18 @@ one from the request.
 /clarity lint README.md
 ```
 
+In Claude Code the plugin also adds one command per mode. Type `/clarity` and the menu lists
+them with a description and an argument hint:
+
+| Command | Argument |
+|---|---|
+| `/clarity:interview` | what you want to write about |
+| `/clarity:rewrite` | a file path, or the pasted draft |
+| `/clarity:review` | a file path, or the pasted draft |
+| `/clarity:lint` | a file path |
+
+In any agent, `/clarity` with no argument replies with the list of modes.
+
 Plain requests work too, in any language:
 
 ```text
@@ -144,6 +156,8 @@ references/
   longform.md               Essays, articles, talks, narrative
   medium.md                 Per-medium routing: docs, academic, email, UI, commits
   indonesian.md             Plain Indonesian, calques, AI tells, EYD, UI copy, RASA
+commands/
+  interview.md, rewrite.md, review.md, lint.md   Claude Code slash commands, one per mode
 hooks/
   hooks.json                SessionStart hook for Claude Code and Codex
   session-start.md          The language rules the hook adds to every session

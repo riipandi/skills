@@ -2,6 +2,14 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0202
+
+- Prompt Optimizer 0.2.0: in Claude Code the `UserPromptSubmit` hook now rewrites each message
+  with a small model before the agent sees it, and adds the brief to the agent's context.
+- The rewrite skips slash commands, short messages, replies, and plain questions, and prints
+  nothing on any failure.
+- Plugin version 0.3.0.
+
 ## 20261125-0145
 
 - Shortened both skill descriptions and the README introduction.

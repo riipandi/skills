@@ -27,7 +27,8 @@ This repo holds several agent skills written in Markdown and ships them as one p
 - `hooks/hooks.json` wires `hooks/hook.sh` to `SessionStart` and `UserPromptSubmit` for Claude
   Code and Codex. `hook.sh` prints `hooks/clarity-language-rules.md` and, unless the prompt
   optimizer is off, `hooks/prompt-optimizer-rules.md`. It also handles
-  `/prompt-optimizer on|off|status`.
+  `/prompt-optimizer on|off|status`, and in Claude Code it rewrites each message with a small
+  model (`claude -p`) using `hooks/prompt-optimizer-rewriter.md`.
 - `hooks/*-rules.md` repeat the always-on rules from the matching `SKILL.md`. Keep each pair in
   sync.
 - `extensions/session-rules.ts` is the pi extension. It adds the same rule files to the system
@@ -65,6 +66,9 @@ This repo holds several agent skills written in Markdown and ships them as one p
 - **Prompt optimizer state.** The flag file `~/.config/riipandi-skills/prompt-optimizer-off`
   means off. Absent means on. `hook.sh`, the pi extension, and the skill's own instructions must
   agree on that path and meaning.
+- **The rewriter fails silently.** Every error path in `rewrite()` prints nothing, so a missing
+  CLI, a timeout, or a bad reply leaves the user's message untouched. Keep it that way. The
+  nested `claude -p` call sets `RIIPANDI_SKILLS_NESTED` so the hook does not run again inside it.
 - **Always-on rules never widen a request.** A rule printed by the hook may sharpen how a
   message is read. It must not add tasks the user did not ask for.
 - **Version.** Keep the same plugin version in `.claude-plugin/plugin.json`,

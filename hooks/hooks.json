@@ -16,7 +16,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.sh\" prompt"
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.sh\" prompt",
+            "timeout": 20,
+            "statusMessage": "Sharpening the prompt..."
           }
         ]
       }

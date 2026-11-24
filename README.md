@@ -146,8 +146,21 @@ always-on mode for agent sessions.
 
 With the hooks installed, the agent reads each message as a rough prompt before acting. It works
 out the goal, the audience, the constraints, and what done looks like. It fills small gaps with
-a defensible assumption and asks one question only when an essential input is missing. It does
-not print the rewritten prompt, and it never widens the request.
+a defensible assumption and asks one question only when an essential input is missing. It never
+widens the request.
+
+In Claude Code the hook goes one step further and rewrites the message before the agent sees it.
+A small model (Haiku by default) turns it into a short brief with a list of open points, and the
+hook adds that brief to the agent's context next to your original message. Your message itself
+is sent unchanged, and the brief is not shown in the chat.
+
+- It adds one or two seconds and one small model call to each message it rewrites.
+- It skips slash commands, messages under 25 characters, and anything the model judges to be a
+  reply, a plain question, or already precise.
+- The rewriting model sees only the message, never the conversation or your files, so the agent
+  is told that your own words win wherever the two differ.
+- Set `RIIPANDI_REWRITE_MODEL` to use another model. Codex and pi do not rewrite yet; there the
+  agent applies the rules itself.
 
 | Command | What happens |
 |---|---|
@@ -185,8 +198,9 @@ skills/
     references/             principles.md and examples.md
 hooks/
   hooks.json                SessionStart and UserPromptSubmit hooks for Claude Code and Codex
-  hook.sh                   Prints the rules and handles the prompt-optimizer toggle
+  hook.sh                   Prints the rules, rewrites messages, and handles the toggle
   clarity-language-rules.md, prompt-optimizer-rules.md   The rules the hook adds to a session
+  prompt-optimizer-rewriter.md   Instructions for the model that rewrites each message
 extensions/
   session-rules.ts          pi extension that adds the same rules to the system prompt
 scripts/

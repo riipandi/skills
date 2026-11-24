@@ -4,7 +4,7 @@ description: "Turn a rough prompt or task description into a finished, ready-to-
 argument-hint: "[on|off|status|<prompt to optimize>]"
 license: MIT
 metadata:
-  version: "0.1.1"
+  version: "0.2.0"
 ---
 
 # Prompt optimizer
@@ -44,6 +44,14 @@ the session. `on` and `off` change nothing else: do not optimize anything in the
 ## Always-on behavior
 
 When it is on, read each user message as a rough prompt before you act on it.
+
+In Claude Code the hook also rewrites the message before you see it. A small model turns it into
+a short brief with a list of open points and adds it to your context in a block that starts
+`PROMPT OPTIMIZER REWRITE`. That model sees only the message, not the conversation or the
+project. Treat its brief as a sharper reading, settle the open points from the project before
+asking the user, and let the user's own words win wherever the two differ. Messages that are
+short, already precise, or lean on earlier conversation arrive without a rewrite; apply the
+steps below to those yourself.
 
 1. Work out, silently: the goal, who or what the result is for, the constraints, and what done
    looks like.

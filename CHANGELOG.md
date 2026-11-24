@@ -6,6 +6,7 @@ Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
 - Added an argument hint to both skills, shown in the Claude Code slash menu. The packer strips it
   from `.skill` files, which do not accept the key.
+- Bumped the plugin to 0.2.1 so installed copies pick up the hints.
 
 ## 20261125-0113
 

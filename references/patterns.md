@@ -9,9 +9,10 @@ the passage, not a verdict. Fix truth, substance, and development first (`edit.m
 - **Strong (S).** A careful writer rarely does this on purpose. Edit on one sighting.
 - **Weak alone (W).** Careful writers do this often. Edit only when two unrelated tells share
   a passage, when the pattern repeats across the piece, or when it hides the meaning.
-- **Hard rule (H).** Applies to every final text. One exception, stated in H1.
+- **Hard rule (H).** Applies to every text you write or rewrite. One exception, stated in H1.
 
-Every watch list below is a search aid. Fix a hit by stating the point, not by swapping in a
+The codes (S1, W4, H1) are an index for you. In anything the user reads, name the pattern in
+plain words. Every watch list below is a search aid. Fix a hit by stating the point, not by swapping in a
 synonym. The same constructions exist in every language; treat the equivalent the same way.
 `indonesian.md` lists the Indonesian forms.
 
@@ -19,11 +20,15 @@ synonym. The same constructions exist in every language; treat the equivalent th
 
 ### H1. No dashes as connectors
 
-The final text contains no em dash and no en dash, spaced or unspaced, and no double hyphen
-used as a dash. Replace each one with a period, comma, colon, or parentheses, or rewrite the
+Text you write or rewrite contains no em dash and no en dash, spaced or unspaced, and no double
+hyphen used as a dash. Replace each one with a period, comma, colon, or parentheses, or rewrite the
 sentence so the relation between the clauses is stated.
 
 A dash lets the writer skip choosing how two clauses relate. Choosing is the edit.
+
+This rule governs your output. In a review, a dash in the author's draft is a weak-alone
+pattern: report it only when the draft is full of them or one hides the relation between two
+clauses, and report it as a suggestion.
 
 ```txt
 Before: The new policy, announced without warning (dash) affects thousands (dash) and

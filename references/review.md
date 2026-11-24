@@ -3,6 +3,18 @@
 Review the piece the user supplied. Do not create a replacement draft or change files unless
 asked. Lead with the largest material issue; line edits come second.
 
+## Layout
+
+Write the review as plain text the author can read in a chat window:
+
+- Open with two or three sentences that state the largest issue. No heading above them.
+- Write each field as its own line: the label, a colon, then the text. Put a blank line between
+  fields so each one renders as its own paragraph.
+- Do not bold the labels, do not turn fields into bullets, and do not wrap the review in a code
+  block. The `txt` blocks below show the fields, not the markup.
+- Number the passage findings 1, 2, 3 and separate them with a blank line.
+- End with the questions the author must answer, as a numbered list.
+
 ## Piece-level diagnosis
 
 Use these fields when relevant, omitting fields that would add ceremony rather than information:
@@ -31,7 +43,7 @@ Use one block per material issue:
 ```txt
 Passage:      the shortest quote that locates the issue
 Verdict:      keep / revise / ask-author / cut
-Pattern:      a concise name from edit.md or patterns.md, with its tier
+Pattern:      the plain name of the pattern, such as "staged contrast" or "borrowed authority"
 Why:          what the passage does instead of its intended job
 Suggestion:   a supported replacement, a precise author question, or the reason to cut
 Safety check: whether the suggestion preserves facts, attribution, scope, and voice
@@ -54,7 +66,15 @@ same formula, inflated claim, meaning drift, or fabricated detail you identified
 - Distinguish errors from likely improvements and both from taste.
 - Quote the previous sentence when context determines whether a contrast, adjective, passive,
   list, or closing beat is earned.
-- Prefer a few high-impact findings to an exhaustive word watchlist.
+- Prefer a few high-impact findings to an exhaustive word watchlist. Five passage findings is
+  usually enough. Fold several hits of one pattern into a single finding, and give a full line
+  edit only when the user asks for one.
+- Name patterns in plain words. The codes in `patterns.md` (S1, W4, H1) are an index for you.
+  The author has not seen that file, so a code in a review is noise.
+- House rules bind the text you write, not the author's draft. The dash rule is the clearest
+  case: a dash in the draft is a weak-alone pattern like any other, worth a finding only when
+  dashes are everywhere or one hides how two clauses relate. Never tell an author that a dash
+  must go.
 - Report no finding when the prose already performs its job.
 - Do not use a detector verdict as evidence that a passage is good, bad, human, or generated.
 - Do not attach a numeric score. A number invites optimizing toward the count instead of the

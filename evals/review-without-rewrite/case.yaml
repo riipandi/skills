@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: review-without-rewrite
+expected_outcome: |
+  A critique in Indonesian that leads with the largest issue, quotes passages, asks the author for missing specifics, and neither rewrites the draft nor changes the file.
+context:
+  scaffold_script: place-files.sh

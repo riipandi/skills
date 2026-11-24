@@ -1,5 +1,5 @@
 [global]
-exclude = ["dist", "node_modules"]
+exclude = ["dist", "node_modules", "evals"]
 
 [MD013]
 line-length = 120

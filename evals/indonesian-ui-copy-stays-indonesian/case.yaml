@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: indonesian-ui-copy-stays-indonesian
+expected_outcome: |
+  strings.id.json stays valid JSON with the same keys and Indonesian values, rewritten as plain natural Indonesian that follows Indonesian number conventions and blames nobody.
+context:
+  scaffold_script: place-files.sh

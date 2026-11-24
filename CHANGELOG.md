@@ -2,6 +2,14 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0047
+
+- Added six eval cases under `evals/` and ran the first with-skill and without-skill comparison.
+- Reviews now name patterns in plain words instead of catalog codes, and cap passage findings.
+- Reviews are laid out as plain `Label: text` lines, with no bold labels and no code blocks.
+- The dash rule now binds only text the skill writes. In a review it is a weak-alone pattern.
+- A reason or consequence the user did not state now counts as an invented claim in new documents.
+
 ## 20261125-0038
 
 - Added a Codex plugin manifest so Codex installs the skill and runs the same `SessionStart` hook.

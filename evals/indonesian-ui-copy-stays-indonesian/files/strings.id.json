@@ -1,0 +1,8 @@
+{
+  "delete_confirm": "Apakah Anda yakin ingin menghapus produk yang telah dipilih?",
+  "save_error": "Telah terjadi kesalahan sistem yang tidak terduga. Mohon ulangi proses.",
+  "empty_products": "Tidak ada data.",
+  "discount_label": "Diskon 30 % — hemat Rp 30.000",
+  "submit_button": "Submit",
+  "login_failed": "Input tidak valid karena Anda tidak mengisi dengan benar!!!"
+}

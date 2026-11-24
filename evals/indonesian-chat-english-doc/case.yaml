@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: indonesian-chat-english-doc
+expected_outcome: |
+  The ADR file is written in English even though the user chats in Indonesian, the chat reply is in Indonesian, and the ADR contains only the facts the user gave.

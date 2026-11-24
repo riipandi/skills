@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "riipandi-clarity",
+  "owner": {
+    "name": "Aris Ripandi",
+    "url": "https://github.com/riipandi"
+  },
+  "description": "Install Clarity as a Claude plugin.",
+  "plugins": [
+    {
+      "name": "clarity",
+      "source": "./",
+      "description": "Draft, rewrite, or review reader-facing prose so it is specific, useful, and recognizably the author's without inventing facts or performing humanness.",
+      "license": "MIT",
+      "keywords": ["writing", "editing", "prose", "style", "humanize", "indonesian"]
+    }
+  ]
+}

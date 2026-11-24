@@ -1,0 +1,15 @@
+{
+  "description": "Applies the Clarity language rules from the first message of every session",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.md\""
+          }
+        ]
+      }
+    ]
+  }
+}

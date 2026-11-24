@@ -43,7 +43,12 @@ package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
 for rel in package["pi"]["extensions"]:
     check((ROOT / rel).is_file(), f"pi extension {rel} exists")
 changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
-check(f"## {version}" in changelog, f"CHANGELOG.md has an entry for {version}")
+headings = re.findall(r"^## (.+)$", changelog, re.M)
+check(
+    bool(headings) and all(re.fullmatch(r"\d{8}-\d{4}", h) for h in headings),
+    "CHANGELOG.md headings are YYYYMMDD-HHMM timestamps",
+)
+check(headings == sorted(headings, reverse=True), "CHANGELOG.md entries are newest first")
 
 # The skill must follow its own hard rule: no em or en dash in the prompt files.
 for path in [

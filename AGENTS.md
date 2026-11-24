@@ -41,9 +41,9 @@ This repo is an agent skill written in Markdown. `SKILL.md` is the prompt agents
 - **No dashes.** The prompt files follow their own hard rule. The validator fails on an em dash
   or en dash in `SKILL.md`, `README.md`, or `references/`.
 - **Version.** Keep the same version in `SKILL.md` under `metadata.version`,
-  `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `.cursor-plugin/plugin.json`, and
-  the first `CHANGELOG.md`
-  heading.
+  `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, and `.cursor-plugin/plugin.json`.
+- **Changelog.** Head each `CHANGELOG.md` entry with a local timestamp in `YYYYMMDD-HHMM` form,
+  for example `## 20261125-0037`, newest first. Get it with `date +%Y%m%d-%H%M`.
 - **Length.** Every word of `SKILL.md` is read on each use. Put detail in `references/`.
 - **Frontmatter.** `SKILL.md` may use only `name`, `description`, `license`, `allowed-tools`,
   `metadata`, and `compatibility`. Any other key makes the `.skill` file invalid.

@@ -17,3 +17,6 @@ First release. Forked from Clarity 0.2.1 and merged with Humanizer 4.0.0, Stop S
 - Added a rumdl configuration for formatting and linting the Markdown files.
 - Indonesian chat sessions: `references/indonesian.md` now governs every chat reply, not only writing tasks.
 - Added a Claude Code `SessionStart` hook that applies the language rules from the first message.
+- Added a Codex plugin manifest so Codex installs the skill and runs the same `SessionStart` hook.
+- Added a pi extension that adds the language rules to the system prompt.
+- Added `scripts/check.sh`: rumdl, ruff, oxlint, oxfmt, shellcheck, and shfmt in one command.

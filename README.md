@@ -48,10 +48,22 @@ it installed, or the two will collide.
 
 The plugin also installs a `SessionStart` hook. It puts the language rules into every session
 from the first message, so chat replies in Indonesian follow them before the skill itself is
-loaded. Other agents have no such hook: there the rules apply once the skill is triggered. To
-get the same effect, copy `hooks/session-start.md` into the agent's global instructions file.
+loaded. Codex and pi get the same rules through their own mechanisms, described below.
 
 ### Codex
+
+Install it as a plugin to get the skill and the `SessionStart` hook:
+
+```bash
+codex plugin marketplace add riipandi/skill-clarity
+```
+
+```bash
+codex plugin add clarity@riipandi-clarity
+```
+
+Codex runs a plugin hook only after you review it. Open Codex, run `/hooks`, and trust the
+`clarity` hook. To install the skill alone, without the hook:
 
 ```bash
 npx skills add riipandi/skill-clarity --global --agent codex
@@ -63,10 +75,18 @@ npx skills add riipandi/skill-clarity --global --agent codex
 pi install git:github.com/riipandi/skill-clarity
 ```
 
+This installs the skill and the `extensions/language-rules.ts` extension. pi has no session
+hook, so the extension adds the language rules to the system prompt as a section.
+
 ### Claude.ai and Claude Desktop
 
 Build `dist/clarity.skill` (see [Development](#development)) and upload it as a skill in
 Settings.
+
+Claude.ai and Claude Desktop chat have no hooks, and a `.skill` file cannot carry one. To apply
+the language rules from the first message, paste the contents of
+[hooks/session-start.md](hooks/session-start.md) into your personal preferences in Settings, or
+into a project's custom instructions.
 
 ### Other agents
 
@@ -76,6 +96,9 @@ npx skills add riipandi/skill-clarity --global --agent '*'
 
 Omit `--global` to install in the current project only. For an agent the Skills CLI does not
 cover, copy `SKILL.md`, `references/`, and `scripts/` into its skill folder.
+
+These agents get the skill without a hook. To apply the language rules from the first message,
+copy `hooks/session-start.md` into the agent's global instructions file.
 
 ## Usage
 
@@ -122,29 +145,40 @@ references/
   medium.md                 Per-medium routing: docs, academic, email, UI, commits
   indonesian.md             Plain Indonesian, calques, AI tells, EYD, UI copy, RASA
 hooks/
-  hooks.json                Claude Code SessionStart hook
+  hooks.json                SessionStart hook for Claude Code and Codex
   session-start.md          The language rules the hook adds to every session
+extensions/
+  language-rules.ts         pi extension that adds the same rules to the system prompt
 scripts/
   strip_markdown.py         Strip Markdown before measuring prose
   prose_stats.py            Diagnostics for lint mode (no composite score)
   validate_package.py       Package consistency check used by CI
   package_skill.py          Pack the skill into dist/clarity.skill
+  check.sh                  Lint and format check for every file type
 ```
 
 The agent loads only the references a task needs.
 
 ## Development
 
-Format and lint the Markdown with [rumdl](https://github.com/rvben/rumdl). The rules are in
-`.rumdl.toml`.
+One script lints and format-checks every file type. It needs `uv` and Node, and it pins each
+tool's version.
 
 ```bash
-uvx rumdl fmt .
+scripts/check.sh
 ```
 
 ```bash
-uvx rumdl check .
+scripts/check.sh --fix
 ```
+
+| Files | Tools | Config |
+|---|---|---|
+| Markdown | [rumdl](https://github.com/rvben/rumdl) | `.rumdl.toml` |
+| Python | [ruff](https://docs.astral.sh/ruff/) (lint and format) | `ruff.toml` |
+| TypeScript | [oxlint](https://oxc.rs/docs/guide/usage/linter) and [oxfmt](https://oxc.rs/docs/guide/usage/formatter) | `.oxlintrc.json`, `.oxfmtrc.json` |
+| JSON, YAML, TOML | oxfmt | `.oxfmtrc.json` |
+| Shell | shellcheck and shfmt | none |
 
 Check the package, then pack it into `dist/clarity.skill`. The pack step runs the check first
 and includes only `SKILL.md`, `references/`, the two lint scripts, and the license files.

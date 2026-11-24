@@ -32,18 +32,26 @@ for rel in sorted(set(re.findall(r"`((?:references|scripts)/[\w.-]+)`", skill)))
 for path in (ROOT / "references").glob("*.md"):
     check(f"references/{path.name}" in skill, f"SKILL.md routes to references/{path.name}")
 
-for rel in (".claude-plugin/plugin.json", ".cursor-plugin/plugin.json"):
+for rel in (".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".cursor-plugin/plugin.json"):
     data = json.loads((ROOT / rel).read_text(encoding="utf-8"))
     check(data["name"] == name, f"{rel} name matches SKILL.md")
     check(data["version"] == version, f"{rel} version is {version}")
 for rel in (".claude-plugin/marketplace.json", "package.json", "skills.sh.json", "hooks/hooks.json"):
     json.loads((ROOT / rel).read_text(encoding="utf-8"))
     check(True, f"{rel} is valid JSON")
+package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+for rel in package["pi"]["extensions"]:
+    check((ROOT / rel).is_file(), f"pi extension {rel} exists")
 changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
 check(f"## {version}" in changelog, f"CHANGELOG.md has an entry for {version}")
 
 # The skill must follow its own hard rule: no em or en dash in the prompt files.
-for path in [ROOT / "SKILL.md", ROOT / "README.md", ROOT / "hooks" / "session-start.md", *sorted((ROOT / "references").glob("*.md"))]:
+for path in [
+    ROOT / "SKILL.md",
+    ROOT / "README.md",
+    ROOT / "hooks" / "session-start.md",
+    *sorted((ROOT / "references").glob("*.md")),
+]:
     text = path.read_text(encoding="utf-8")
     check(not re.search("[–—]", text), f"{path.relative_to(ROOT)} has no dashes")
 

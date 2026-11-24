@@ -12,7 +12,8 @@ credited here as the source of adapted ideas.
 - Used for: the base `SKILL.md`, the modes and their arguments, `references/interview.md`,
   `references/edit.md`, `references/review.md`, `references/longform.md`,
   `references/medium.md`, `scripts/strip_markdown.py`, and `scripts/prose_stats.py`. The
-  reference files are modified. The two scripts are unmodified.
+  reference files are modified. The two scripts are reformatted with ruff; their logic is
+  unchanged.
 
 ## Humanizer
 

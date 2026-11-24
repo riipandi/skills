@@ -19,8 +19,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Check Markdown
-        uses: rvben/rumdl@v0
+      - uses: astral-sh/setup-uv@v6
+      - name: Lint and format check
+        run: scripts/check.sh
       - name: Check package files and pack the .skill file
         run: python3 scripts/package_skill.py
       - name: Check skill discovery

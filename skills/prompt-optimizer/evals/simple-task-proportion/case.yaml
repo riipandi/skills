@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: simple-task-proportion
+expected_outcome: |
+  One fenced code block with a short prompt: no role, no tags, no sections, no closing reasoning line.

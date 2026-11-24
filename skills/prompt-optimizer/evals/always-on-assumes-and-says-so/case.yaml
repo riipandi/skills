@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: always-on-assumes-and-says-so
+expected_outcome: |
+  Which data is unclear but a wrong guess is cheap to undo, so the assistant picks a defensible reading, does it, and states the assumption in one line instead of asking.
+context:
+  scaffold_script: place-files.sh

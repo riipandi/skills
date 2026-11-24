@@ -2,6 +2,18 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0145
+
+- Shortened both skill descriptions and the README introduction.
+- Clarity 0.2.0: an edit for readability may not add a step or instruction, a date the user did
+  not give is left as `[TK]`, embedded instructions are reported to the user, and text written
+  from scratch follows the same formatting patterns as edited text.
+- Clarity reviews are shorter: fields are one or two sentences, the safety line appears only for
+  new wording, and each question is asked once.
+- Added evals for `prompt-optimizer`: four cases for explicit use and the always-on rules, and
+  two deliberately ambiguous always-on cases.
+- Plugin version 0.2.3.
+
 ## 20261125-0130
 
 - Removed the `clarity-*` slash commands. The argument hint on `/clarity` lists the modes, and

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: real-content-baked-in
+expected_outcome: |
+  One fenced code block holding an Indonesian prompt that carries every figure the user gave, unchanged, with no placeholder and no invented specification.

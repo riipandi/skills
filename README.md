@@ -1,12 +1,12 @@
 # Riipandi Skills
 
-Agent skills I use every day, packaged as one plugin for Claude Code, Codex, Cursor, pi, and any
-agent that reads `SKILL.md`.
+Agent skills for clearer prose and sharper prompts. One plugin for Claude Code, Codex, Cursor,
+and pi; plain `SKILL.md` folders for every other agent.
 
 | Skill | What it does | Always on |
 |---|---|---|
-| [clarity](skills/clarity/SKILL.md) | Drafts, rewrites, and reviews prose so it is specific, useful, and recognizably the author's, without inventing facts. Chat follows your language; files are written in English. | Language rules, through the hook |
-| [prompt-optimizer](skills/prompt-optimizer/SKILL.md) | Turns a rough prompt into a finished one, and reads each of your messages as a rough prompt to sharpen before acting. | Yes, through the hook. Toggle with `on` and `off`. |
+| [clarity](skills/clarity/SKILL.md) | Drafts, rewrites, and reviews prose so it is specific, honest, and sounds like its author. Chat follows your language; files are written in English. | Language rules, through the hook |
+| [prompt-optimizer](skills/prompt-optimizer/SKILL.md) | Turns a rough prompt into a finished one, and sharpens each of your messages before the agent acts on it. | Yes, through the hook. Toggle with `on` and `off`. |
 
 ## Installation
 

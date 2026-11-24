@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: always-on-sharpens-without-widening
+expected_outcome: |
+  app.py gains email validation in signup and nothing else changes. The reply does not print a rewritten prompt, states the validation rule it assumed, and adds no test file, dependency, or unrelated validation.
+context:
+  scaffold_script: place-files.sh

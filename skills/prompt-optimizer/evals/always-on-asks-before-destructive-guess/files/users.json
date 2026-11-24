@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "email": "ayu@example.com",
+    "status": "active",
+    "last_login": "2026-11-20"
+  },
+  {
+    "id": 2,
+    "email": "bima@example.com",
+    "status": "inactive",
+    "last_login": "2026-11-18"
+  },
+  {
+    "id": 3,
+    "email": "citra@example.com",
+    "status": "active",
+    "last_login": "2024-02-03"
+  },
+  {
+    "id": 4,
+    "email": "dewa@example.com",
+    "status": "suspended",
+    "last_login": "2025-06-30"
+  },
+  {
+    "id": 5,
+    "email": "eka@example.com",
+    "status": "inactive",
+    "last_login": "2023-09-12"
+  },
+  {
+    "id": 6,
+    "email": "fajar@example.com",
+    "status": "active",
+    "last_login": null
+  }
+]

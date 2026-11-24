@@ -40,8 +40,18 @@ for name in names:
     target = out_dir / f"{name}.skill"
     with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as archive:
         for path in files:
-            archive.write(path, Path(name) / path.relative_to(skill_dir))
+            arcname = str(Path(name) / path.relative_to(skill_dir))
+            if path.name == "SKILL.md":
+                # The .skill format rejects argument-hint, which only Claude Code's slash menu uses.
+                text = "".join(
+                    line
+                    for line in path.read_text(encoding="utf-8").splitlines(keepends=True)
+                    if not line.startswith("argument-hint:")
+                )
+                archive.writestr(arcname, text)
+            else:
+                archive.write(path, arcname)
         for rel in LICENSE_FILES:
             archive.write(ROOT / rel, Path(name) / rel)
-    assert f"{name}/SKILL.md" in zipfile.ZipFile(target).namelist()
+    assert b"argument-hint" not in zipfile.ZipFile(target).read(f"{name}/SKILL.md")
     print(f"Packed {len(files) + len(LICENSE_FILES)} files into {target.relative_to(ROOT)}")

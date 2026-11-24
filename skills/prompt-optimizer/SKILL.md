@@ -1,6 +1,7 @@
 ---
 name: prompt-optimizer
 description: "Turn a rough prompt, half-formed idea, or task description into a finished prompt, and read every user message as a rough prompt to sharpen before acting. Use when the user wants to write, rewrite, optimize, improve, or polish a prompt, pastes a draft prompt, or describes a task they plan to send to an LLM. Also use when you write a brief for a subagent or another model. Toggle the always-on behavior with `on`, `off`, or `status`."
+argument-hint: "[on|off|status|<prompt to optimize>]"
 license: MIT
 metadata:
   version: "0.1.0"

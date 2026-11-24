@@ -1,6 +1,7 @@
 ---
 name: clarity
 description: "Draft, rewrite, or review reader-facing prose so it is specific, useful, and recognizably the author's without inventing facts or performing humanness. Use for essays, articles, newsletters, documentation, reports, commit and PR text, talks, launch copy, UI copy, and other prose that feels generic, hollow, or AI-shaped, in English or Indonesian. Also use for the whole session whenever the user chats in Indonesian, so every chat reply is plain, natural Indonesian. Chat replies follow the user's language; files and other artifacts are written in English. Supports co-write, rewrite, review, and lint modes."
+argument-hint: "[interview|rewrite|review|lint] [file path or text]"
 license: MIT
 metadata:
   version: "0.1.0"

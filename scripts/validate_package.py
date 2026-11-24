@@ -8,7 +8,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFESTS = (".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".cursor-plugin/plugin.json")
-# The .skill format rejects any other top-level frontmatter key.
+# The .skill format rejects any other top-level frontmatter key. argument-hint is the one extra
+# key allowed in the source: Claude Code shows it in the slash menu, and package_skill.py strips it.
+SOURCE_ONLY_KEYS = {"argument-hint"}
 ALLOWED_KEYS = {"name", "description", "license", "allowed-tools", "metadata", "compatibility"}
 failures = []
 
@@ -36,8 +38,9 @@ for skill_dir in skill_dirs:
     check(name == skill_dir.name, f"{rel}/SKILL.md name matches its folder")
     check(bool(description) and len(description.group(1)) <= 1024, f"{rel}/SKILL.md description fits 1024 characters")
     check(bool(re.search(r'^\s+version:\s*"[^"]+"', front, re.M)), f"{rel}/SKILL.md has metadata.version")
-    extra = set(re.findall(r"^([\w-]+):", front, re.M)) - ALLOWED_KEYS
+    extra = set(re.findall(r"^([\w-]+):", front, re.M)) - ALLOWED_KEYS - SOURCE_ONLY_KEYS
     check(not extra, f"{rel}/SKILL.md frontmatter has only allowed keys {sorted(extra) or ''}")
+    check("argument-hint:" in front, f"{rel}/SKILL.md has an argument hint for the slash menu")
     # Every reference or script the prompt routes to must exist, and every reference must be routed to.
     for target in sorted(set(re.findall(r"`((?:references|scripts)/[\w.-]+)`", text))):
         check((skill_dir / target).is_file(), f"{rel}/{target} exists")

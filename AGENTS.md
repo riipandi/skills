@@ -26,7 +26,7 @@ This repo holds several agent skills written in Markdown and ships them as one p
 - `skills.sh.json` groups the skills for the Skills CLI.
 - `commands/` holds Claude Code slash commands, named `<skill>-<mode>.md`
   (`/riipandi:clarity-review`). Their `description` and `argument-hint` are what the slash menu
-  shows. `argument-hint` is allowed here but not in a `SKILL.md`.
+  shows.
 - `hooks/hooks.json` wires `hooks/hook.sh` to `SessionStart` and `UserPromptSubmit` for Claude
   Code and Codex. `hook.sh` prints `hooks/clarity-language-rules.md` and, unless the prompt
   optimizer is off, `hooks/prompt-optimizer-rules.md`. It also handles
@@ -78,7 +78,9 @@ This repo holds several agent skills written in Markdown and ships them as one p
 - **Length.** Every word of a `SKILL.md` is read on each use, and every word of a
   `hooks/*-rules.md` file is read in every session. Put detail in `references/`.
 - **Frontmatter.** A `SKILL.md` may use only `name`, `description`, `license`, `allowed-tools`,
-  `metadata`, and `compatibility`. Any other key makes the `.skill` file invalid.
+  `metadata`, `compatibility`, and `argument-hint`. Any other key makes the `.skill` file
+  invalid. `argument-hint` is what Claude Code shows after the skill name in the slash menu;
+  `scripts/package_skill.py` strips it from the packed `.skill` file.
 - **Quality.** Every file must pass `scripts/check.sh`: rumdl for Markdown, ruff for Python,
   oxlint and oxfmt for TypeScript, oxfmt for JSON, YAML, and TOML, shellcheck and shfmt for shell.
   Run `scripts/check.sh --fix` after editing.

@@ -2,6 +2,11 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0125
+
+- Added an argument hint to both skills, shown in the Claude Code slash menu. The packer strips it
+  from `.skill` files, which do not accept the key.
+
 ## 20261125-0113
 
 - Renamed the repo to `riipandi/skills` and the plugin to `riipandi`. Skills are now

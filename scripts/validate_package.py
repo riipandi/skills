@@ -72,12 +72,6 @@ check("hook.sh" in hooks and (ROOT / "hooks" / "hook.sh").is_file(), "hooks/hook
 for rule_file in re.findall(r"hooks/([\w-]+\.md)", (ROOT / "hooks" / "hook.sh").read_text(encoding="utf-8")):
     check((ROOT / "hooks" / rule_file).is_file(), f"hooks/{rule_file} exists")
 
-# Each command must show a description and an argument hint in the slash menu.
-for path in sorted((ROOT / "commands").glob("*.md")):
-    head = path.read_text(encoding="utf-8").split("---", 2)[1]
-    check("description:" in head and "argument-hint:" in head, f"commands/{path.name} has a description and a hint")
-    check(path.stem.split("-")[0] in names or path.stem in names, f"commands/{path.name} is named after a skill")
-
 changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
 headings = re.findall(r"^## (.+)$", changelog, re.M)
 check(

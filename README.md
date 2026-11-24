@@ -123,15 +123,7 @@ one from the request. With nothing to work on, it replies with the list of modes
 /riipandi:clarity interview a post about why we moved off microservices
 ```
 
-In Claude Code the plugin adds one command per mode. The slash menu shows each with a
-description and an argument hint:
-
-| Command | Argument |
-|---|---|
-| `/riipandi:clarity-interview` | what you want to write about |
-| `/riipandi:clarity-rewrite` | a file path, or the pasted draft |
-| `/riipandi:clarity-review` | a file path, or the pasted draft |
-| `/riipandi:clarity-lint` | a file path |
+In Claude Code the slash menu shows the mode words as a hint after `/riipandi:clarity`.
 
 Plain requests work too, in any language:
 
@@ -191,7 +183,6 @@ skills/
   prompt-optimizer/
     SKILL.md                The prompt: arguments, toggle, always-on behavior, explicit use
     references/             principles.md and examples.md
-commands/                   Claude Code slash commands, one per Clarity mode
 hooks/
   hooks.json                SessionStart and UserPromptSubmit hooks for Claude Code and Codex
   hook.sh                   Prints the rules and handles the prompt-optimizer toggle

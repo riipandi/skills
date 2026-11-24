@@ -2,6 +2,11 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0130
+
+- Removed the `clarity-*` slash commands. The argument hint on `/clarity` lists the modes, and
+  the mode words already do the same job in every agent. Plugin version 0.2.2.
+
 ## 20261125-0125
 
 - Added an argument hint to both skills, shown in the Claude Code slash menu. The packer strips it

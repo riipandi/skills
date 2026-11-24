@@ -24,9 +24,6 @@ This repo holds several agent skills written in Markdown and ships them as one p
   loads the `skills/` folder.
 - `package.json` makes the repo a pi package. Do not add a `version` field; pi installs from git.
 - `skills.sh.json` groups the skills for the Skills CLI.
-- `commands/` holds Claude Code slash commands, named `<skill>-<mode>.md`
-  (`/riipandi:clarity-review`). Their `description` and `argument-hint` are what the slash menu
-  shows.
 - `hooks/hooks.json` wires `hooks/hook.sh` to `SessionStart` and `UserPromptSubmit` for Claude
   Code and Codex. `hook.sh` prints `hooks/clarity-language-rules.md` and, unless the prompt
   optimizer is off, `hooks/prompt-optimizer-rules.md`. It also handles

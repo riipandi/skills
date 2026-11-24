@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rewrite-pagination-keeps-callers
+expected_outcome: |
+  list_orders gains pagination without breaking report.py, which calls it with no pagination arguments and expects every order.
+context:
+  scaffold_script: place-files.sh

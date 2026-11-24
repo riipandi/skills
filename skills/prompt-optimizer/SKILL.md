@@ -1,10 +1,10 @@
 ---
 name: prompt-optimizer
 description: "Turn a rough prompt or task description into a finished, ready-to-send prompt. Use when the user wants to write, improve, or check a prompt, or when you brief a subagent or another model. Also reads each user message as a rough prompt to sharpen before acting; toggle that with `on`, `off`, or `status`."
-argument-hint: "[on|off|status|<prompt to optimize>]"
+argument-hint: "[on|off|status|rewrite on|rewrite off|<prompt to optimize>]"
 license: MIT
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Prompt optimizer
@@ -18,11 +18,13 @@ user's own messages, and as an explicit tool that returns a finished prompt.
 ```txt
 on        Turn the always-on behavior on, for this session and new ones.
 off       Turn it off, for this session and new ones.
-status    Say whether it is on or off.
+status    Say whether it is on or off, and whether message rewriting is on.
+rewrite on | rewrite off
+          Turn message rewriting on or off. It is off by default.
 <text>    Anything else is a prompt to optimize. Return the finished prompt.
 ```
 
-With no argument and nothing to optimize in the conversation, reply with these four lines in the
+With no argument and nothing to optimize in the conversation, reply with these lines in the
 user's language and ask what they want to do.
 
 ## Toggle: on, off, status
@@ -31,8 +33,12 @@ The always-on behavior is on by default wherever this repo's hooks or extensions
 The state lives in one flag file: `~/.config/riipandi-skills/prompt-optimizer-off` (under
 `$XDG_CONFIG_HOME` when that is set). The file exists when the behavior is off.
 
+Message rewriting has its own flag file in the same folder, `prompt-optimizer-rewrite-on`, which
+exists when rewriting is on. `rewrite on` creates it and `rewrite off` deletes it.
+
 1. If a hook already handled the command, this turn's context holds a line starting with
-   `PROMPT OPTIMIZER ON`, `PROMPT OPTIMIZER OFF`, or `PROMPT OPTIMIZER STATUS`. The state is
+   `PROMPT OPTIMIZER ON`, `PROMPT OPTIMIZER OFF`, `PROMPT OPTIMIZER REWRITE`, or
+   `PROMPT OPTIMIZER STATUS`. The state is
    saved. Do not touch the file.
 2. If no such line is present and you have a shell, create the flag file for `off` or delete it
    for `on`. For `status`, check whether it exists.
@@ -45,7 +51,8 @@ the session. `on` and `off` change nothing else: do not optimize anything in the
 
 When it is on, read each user message as a rough prompt before you act on it.
 
-In Claude Code the hook also rewrites the message before you see it. A small model turns it into
+Message rewriting is a separate, opt-in step (`rewrite on`). When it is on, the Claude Code hook
+rewrites the message before you see it. A small model turns it into
 a short brief with a list of open points and adds it to your context in a block that starts
 `PROMPT OPTIMIZER REWRITE`. That model sees only the message, not the conversation or the
 project. Treat its brief as a sharper reading, settle the open points from the project before

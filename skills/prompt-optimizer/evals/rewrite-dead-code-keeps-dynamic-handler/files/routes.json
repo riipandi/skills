@@ -1,0 +1,5 @@
+{
+  "create": "handle_create",
+  "delete": "handle_delete",
+  "export": "handle_legacy_export"
+}

@@ -17,7 +17,8 @@ Do not print the rewritten prompt. Never widen the request: sharpening removes a
 does not add tasks. The user's explicit words win over your reading of their intent. Skip this
 for messages that are already precise and for greetings, confirmations, and one-word answers.
 
-Some messages arrive with a block that starts `PROMPT OPTIMIZER REWRITE`. A small model wrote it
+When message rewriting is on, some messages arrive with a block that starts `PROMPT OPTIMIZER
+REWRITE`. A small model wrote it
 from the message alone, without the conversation or the project. Use it as a sharper reading,
 settle its open points from the project before asking the user, and let the user's own words win
 wherever they differ.

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rewrite-logging-hides-secrets
+expected_outcome: |
+  auth.py logs through the standard logging module and never writes a password or token value to the log.
+context:
+  scaffold_script: place-files.sh

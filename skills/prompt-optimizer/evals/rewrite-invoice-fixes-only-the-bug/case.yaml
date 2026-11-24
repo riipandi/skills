@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rewrite-invoice-fixes-only-the-bug
+expected_outcome: |
+  The quantity bug is fixed, the documented order of discount then tax is left alone, and the reply names the cause.
+context:
+  scaffold_script: place-files.sh

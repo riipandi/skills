@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rewrite-dead-code-keeps-dynamic-handler
+expected_outcome: |
+  The truly unused helper is removed. handle_legacy_export, which is referenced only by name in routes.json, is kept or explicitly flagged, and app.py still dispatches every route.
+context:
+  scaffold_script: place-files.sh

@@ -149,8 +149,11 @@ out the goal, the audience, the constraints, and what done looks like. It fills 
 a defensible assumption and asks one question only when an essential input is missing. It never
 widens the request.
 
-In Claude Code the hook goes one step further and rewrites the message before the agent sees it.
-A small model (Haiku by default) turns it into a short brief with a list of open points, and the
+### Message rewriting (opt-in)
+
+Off by default. Turn it on with `/riipandi:prompt-optimizer rewrite on`. The hook then rewrites
+each message before the agent sees it. A small model (Haiku by default) turns it into a short
+brief with a list of open points, and the
 hook adds that brief to the agent's context next to your original message. Your message itself
 is sent unchanged, and the brief is not shown in the chat.
 
@@ -159,14 +162,19 @@ is sent unchanged, and the brief is not shown in the chat.
   reply, a plain question, or already precise.
 - The rewriting model sees only the message, never the conversation or your files, so the agent
   is told that your own words win wherever the two differ.
-- Set `RIIPANDI_REWRITE_MODEL` to use another model. Codex and pi do not rewrite yet; there the
-  agent applies the rules itself.
+- Set `RIIPANDI_REWRITE_MODEL` to use another model. The hook calls the `claude` CLI, so it also
+  runs under Codex when that CLI is installed. pi does not rewrite.
+
+It is off by default because it has not earned its cost. On six ambiguous coding requests, runs
+with the brief and runs without it passed the same 27 of 27 checks. The cases are in
+`skills/prompt-optimizer/evals/`.
 
 | Command | What happens |
 |---|---|
 | `/riipandi:prompt-optimizer off` | Turn it off, for this session and new ones |
 | `/riipandi:prompt-optimizer on` | Turn it back on |
-| `/riipandi:prompt-optimizer status` | Say whether it is on or off |
+| `/riipandi:prompt-optimizer status` | Say whether it is on or off, and whether rewriting is on |
+| `/riipandi:prompt-optimizer rewrite on` | Turn message rewriting on (`rewrite off` turns it off) |
 
 The state is one file, `~/.config/riipandi-skills/prompt-optimizer-off`, shared by Claude Code,
 Codex, and pi. It exists when the optimizer is off. Delete it to turn the optimizer back on by

@@ -64,7 +64,9 @@ This repo holds several agent skills written in Markdown and ships them as one p
 - **No dashes.** The prompt files follow Clarity's hard rule. The validator fails on an em dash
   or en dash in `README.md`, `hooks/*.md`, any `SKILL.md`, or any `references/` file.
 - **Prompt optimizer state.** The flag file `~/.config/riipandi-skills/prompt-optimizer-off`
-  means off. Absent means on. `hook.sh`, the pi extension, and the skill's own instructions must
+  means off. Absent means on. Message rewriting is the reverse: `prompt-optimizer-rewrite-on` means
+  on, and absent means off, because rewriting costs a model call per message. `hook.sh`, the pi
+  extension, and the skill's own instructions must
   agree on that path and meaning.
 - **The rewriter fails silently.** Every error path in `rewrite()` prints nothing, so a missing
   CLI, a timeout, or a bad reply leaves the user's message untouched. Keep it that way. The

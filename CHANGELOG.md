@@ -2,6 +2,13 @@
 
 Entries are headed by a local timestamp in `YYYYMMDD-HHMM` form, newest first.
 
+## 20261125-0212
+
+- Prompt Optimizer 0.3.0: message rewriting is now opt-in. Turn it on with `rewrite on`. An
+  evaluation on six ambiguous coding requests found no measurable difference with the brief.
+- `status` now reports both the optimizer state and the rewriting state.
+- Added six eval cases for message rewriting. Plugin version 0.3.1.
+
 ## 20261125-0202
 
 - Prompt Optimizer 0.2.0: in Claude Code the `UserPromptSubmit` hook now rewrites each message
